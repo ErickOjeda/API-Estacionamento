@@ -1,5 +1,6 @@
 package br.com.uniamerica.estacionamento.controller;
 
+import br.com.uniamerica.estacionamento.Relatorio;
 import br.com.uniamerica.estacionamento.entity.Modelo;
 import br.com.uniamerica.estacionamento.entity.Movimentacao;
 import br.com.uniamerica.estacionamento.entity.Veiculo;
@@ -53,8 +54,8 @@ public class MovimentacaoController {
     public ResponseEntity<?> cadastrar(@RequestBody final Movimentacao movimentacao){
         try {
             this.movimentacaoService.cadastrar(movimentacao);
-            return ResponseEntity.ok("Cadastro feito com sucesso!");
 
+            return ResponseEntity.ok(movimentacao);
         }
         catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest().body("Error " + e.getCause().getCause().getMessage());
@@ -70,7 +71,7 @@ public class MovimentacaoController {
     {
         try {
             this.movimentacaoService.editar(id, movimentacao);
-            return ResponseEntity.ok("Cadastro feito com sucesso!");
+            return ResponseEntity.ok(movimentacao);
         }
         catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest().body("Error " + e.getCause().getCause().getMessage());
@@ -80,11 +81,11 @@ public class MovimentacaoController {
         }
     }
 
-    @PutMapping("/sair")
-    public ResponseEntity <?> sair (@RequestParam ("id") final Long id) {
+    @PutMapping("/sair/{id}")
+    public ResponseEntity <?> sair (@PathVariable("id") final Long id) {
         try {
-            this.movimentacaoService.sair(id);
-            return ResponseEntity.ok("Saida setada!");
+            Relatorio relatorio = this.movimentacaoService.sair(id);
+            return ResponseEntity.ok(relatorio);
         }
         catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest().body("Error " + e.getCause().getCause().getMessage());

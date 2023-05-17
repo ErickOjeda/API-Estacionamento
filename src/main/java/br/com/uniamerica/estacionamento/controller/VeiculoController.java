@@ -52,7 +52,7 @@ public class VeiculoController {
         catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest().body("Error " + e.getCause().getCause().getMessage());
         } catch (RuntimeException e) {
-            return ResponseEntity.internalServerError().body("Error" + e.getMessage());
+            return ResponseEntity.internalServerError().body("Error " + e.getMessage());
         }
 
     }

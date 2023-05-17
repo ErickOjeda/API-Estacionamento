@@ -9,6 +9,7 @@ import org.hibernate.envers.AuditTable;
 import org.hibernate.envers.Audited;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import java.math.BigDecimal;
 import java.time.LocalTime;
 
 @Entity
@@ -35,6 +36,6 @@ public class Condutor extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "tempo_desconto")
-    private Integer tempoDesconto;
+    private BigDecimal tempoDesconto;
 
 }

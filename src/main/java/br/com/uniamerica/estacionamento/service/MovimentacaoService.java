@@ -1,5 +1,6 @@
 package br.com.uniamerica.estacionamento.service;
 
+import br.com.uniamerica.estacionamento.Relatorio;
 import br.com.uniamerica.estacionamento.entity.*;
 import br.com.uniamerica.estacionamento.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +71,7 @@ public class MovimentacaoService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void sair(final Long id){
+    public Relatorio sair(final Long id){
 
         // Verifica se a movimentação existe
         final Movimentacao movBanco = this.movimentacaoRepository.findById(id).orElse(null);
@@ -82,23 +83,50 @@ public class MovimentacaoService {
 
         // Pega os valores de configuração
         final Configuracao config = this.configuracaoRepository.findById(1L).orElse(null);
+        Assert.isTrue(config != null, "Configuracoes nao cadastradas");
 
         // Pega o desconto do cliente
         final Condutor condutor = this.condutorRepository.findById(movBanco.getCondutor().getId()).orElse(null);
+        Assert.isTrue(condutor != null, "Condutor nao encontrado");
 
-//      final BigDecmial preco = BigDecimal.valueOf();
-
+        // Seta saida e tempo
         movBanco.setSaida(saida);
         movBanco.setTempoHoras(duracao.toHoursPart());
         movBanco.setTempoMinutos(duracao.toMinutesPart());
 
-        Assert.isTrue(config.getValorHora() != null, "Valor da hora não definido em configurações");
+        // Calcula o preco de acordo com o tempo passado
+        final BigDecimal horas = BigDecimal.valueOf(duracao.toHoursPart());
+        final BigDecimal minutos = BigDecimal.valueOf(duracao.toMinutesPart()).divide(BigDecimal.valueOf(60), 2, RoundingMode.HALF_EVEN);
+        BigDecimal preco = config.getValorHora().multiply(horas).add(config.getValorHora().multiply(minutos));
 
-//        if(condutor.getTempoDesconto() && condutor.getTempoDesconto() >= 50) {
-//            movBanco.setValorDesconto(config.getValorHora().multiply(BigDecimal.valueOf(condutor.getTempoDesconto())));
-//        }
+        final BigDecimal tempoDesconto = condutor.getTempoDesconto() != null ? condutor.getTempoDesconto() : new BigDecimal(0);
 
+        if (config.getGerarDesconto()) {
+            condutor.setTempoDesconto(tempoDesconto.add(horas.add(minutos)));
+        }
+
+        BigDecimal valor_desc = BigDecimal.ZERO;
+
+        if(tempoDesconto.compareTo( new BigDecimal(config.getTempoParaDesconto())) >= 0) {
+            valor_desc = config.getValorHora().multiply(tempoDesconto);
+
+            // Caso o valor do desconto seja maior que o preco a pagar
+            if (valor_desc.compareTo(preco) >= 0){
+                valor_desc = preco;
+            }
+
+            movBanco.setValorDesconto(valor_desc);
+            condutor.setTempoDesconto(new BigDecimal(0));
+        }
+
+        movBanco.setValorTotal(preco.subtract(valor_desc));
+        movBanco.setValorHora(config.getValorHora());
+        movBanco.setValorMinutoMulta(config.getValorMinutoMulta());
+
+        this.condutorRepository.save(condutor);
         this.movimentacaoRepository.save(movBanco);
+
+        return new Relatorio(movBanco.getEntrada(), movBanco.getSaida(), movBanco.getCondutor(), movBanco.getVeiculo(), horas.intValue(), tempoDesconto.setScale(0, RoundingMode.HALF_EVEN), preco.subtract(valor_desc).setScale(2, RoundingMode.HALF_EVEN), valor_desc.setScale(2, RoundingMode.HALF_EVEN));
     }
 
     @Transactional(rollbackFor = Exception.class)

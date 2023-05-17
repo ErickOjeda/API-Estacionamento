@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/api/configs")
+@RequestMapping("/api/config")
 public class ConfiguracaoController {
     @Autowired
     private ConfiguracaoRepository configuracaoRepository;
