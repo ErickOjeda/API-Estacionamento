@@ -28,11 +28,11 @@ public class MarcaService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void editar(final Long id,final Marca marca){
+    public void editar(final Long id, final Marca marca){
 
         final Marca marcaBanco = this.marcaRepository.findById(id).orElse(null);
 
-        Assert.isTrue((marcaBanco != null), "Não foi possivel identificar o registro informado");
+        Assert.isTrue(marcaBanco != null, "Não foi possivel identificar o registro informado");
         Assert.isTrue(marca.getId().equals(id), "Não foi possivel identificar o registro informado");
 
         Assert.isTrue(marca.getNome() != null, "Nome não informado");

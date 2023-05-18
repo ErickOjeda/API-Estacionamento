@@ -72,7 +72,7 @@ public class MarcaController {
             }
 
             this.marcaRepository.save(marca);
-            return ResponseEntity.ok("Atualização feita com sucesso!");
+            return ResponseEntity.ok(marca);
         }
         catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest().body("Error " + e.getCause().getCause().getMessage());
@@ -88,11 +88,11 @@ public class MarcaController {
     public ResponseEntity <?> deletar (@RequestParam ("id") final Long id) {
        try{
             this.marcaService.deletar(id);
-            return ResponseEntity.ok("Marca setada como inativo");
+            return ResponseEntity.ok("Deletado");
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest().body("Error " + e.getCause().getCause().getMessage());
         } catch (RuntimeException e) {
-            return ResponseEntity.internalServerError().body("Error" + e.getMessage());
+            return ResponseEntity.internalServerError().body("Error " + e.getMessage());
         }
     }
 

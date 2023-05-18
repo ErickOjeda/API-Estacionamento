@@ -38,8 +38,8 @@ public class ConfiguracaoService {
 
         final Configuracao configBanco = this.configuracaoRepository.findById(id).orElse(null);
 
-        Assert.isTrue((configBanco != null), "Não foi possivel identificar o registro informado");
-        Assert.isTrue(!config.getId().equals(id), "Não foi possivel identificar o registro informado");
+        Assert.isTrue(configBanco != null, "Não foi possivel identificar o registro informado 1");
+        Assert.isTrue(config.getId().equals(id), "Não foi possivel identificar o registro informado 2");
 
         Assert.isTrue(config.getValorHora() != null, "Valor hora não informado");
         Assert.isTrue(config.getValorMinutoMulta() != null, "Valor minuto multa não informado");

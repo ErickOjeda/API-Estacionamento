@@ -77,7 +77,7 @@ public class MovimentacaoController {
             return ResponseEntity.badRequest().body("Error " + e.getCause().getCause().getMessage());
         }
         catch (RuntimeException e) {
-            return ResponseEntity.internalServerError().body("Error" + e.getMessage());
+            return ResponseEntity.internalServerError().body("Error " + e.getMessage());
         }
     }
 
@@ -91,7 +91,7 @@ public class MovimentacaoController {
             return ResponseEntity.badRequest().body("Error " + e.getCause().getCause().getMessage());
         }
         catch (RuntimeException e) {
-            return ResponseEntity.internalServerError().body("Error" + e.getMessage());
+            return ResponseEntity.internalServerError().body("Error " + e.getMessage());
         }
 
     }
@@ -103,13 +103,13 @@ public class MovimentacaoController {
     public ResponseEntity <?> deletar (@RequestParam ("id") final Long id) {
         try {
             this.movimentacaoService.deletar(id);
-            return ResponseEntity.ok("Setado como inativo");
+            return ResponseEntity.ok("Deletado");
         }
         catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest().body("Error " + e.getCause().getCause().getMessage());
         }
         catch (RuntimeException e) {
-            return ResponseEntity.internalServerError().body("Error" + e.getMessage());
+            return ResponseEntity.internalServerError().body("Error " + e.getMessage());
         }
 
     }

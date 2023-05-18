@@ -44,7 +44,7 @@ public class ModeloService {
 
         final Modelo modeloBanco = this.modeloRepository.findById(id).orElse(null);
 
-        Assert.isTrue((modeloBanco != null), "Não foi possivel identificar o registro informado");
+        Assert.isTrue(modeloBanco != null, "Não foi possivel identificar o registro informado");
         Assert.isTrue(modelo.getId().equals(id), "Não foi possivel identificar o registro informado");
 
         Assert.isTrue(modelo.getNome() != null, "Nome não informado");

@@ -78,11 +78,11 @@ public class ModeloController {
 
         try {
             this.modeloService.deletar(id);
-            return ResponseEntity.ok("Modelo setado como inativo");
+            return ResponseEntity.ok("Deletado");
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest().body("Error " + e.getCause().getCause().getMessage());
         } catch (RuntimeException e) {
-            return ResponseEntity.internalServerError().body("Error" + e.getMessage());
+            return ResponseEntity.internalServerError().body("Error " + e.getMessage());
         }
     }
 

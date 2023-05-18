@@ -25,6 +25,11 @@ public class ConfiguracaoController {
         return ResponseEntity.ok(this.configuracaoRepository.findById(id));
     }
 
+    @GetMapping("/lista")
+    public ResponseEntity<?> findAll(){
+        return ResponseEntity.ok(this.configuracaoRepository.findAll());
+    }
+
 //    POST
     @PostMapping
     public ResponseEntity<?> cadastrar(@RequestBody final Configuracao config){
@@ -33,6 +38,9 @@ public class ConfiguracaoController {
             return ResponseEntity.ok(config);
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest().body("Error " + e.getStackTrace());
+        }
+        catch (RuntimeException e) {
+            return ResponseEntity.internalServerError().body("Error " + e.getMessage());
         }
     }
 
@@ -47,7 +55,7 @@ public class ConfiguracaoController {
             return ResponseEntity.badRequest().body("Error " + e.getCause().getCause().getMessage());
         }
         catch (RuntimeException e) {
-            return ResponseEntity.internalServerError().body("Error" + e.getMessage());
+            return ResponseEntity.internalServerError().body("Error " + e.getMessage());
         }
     }
 }

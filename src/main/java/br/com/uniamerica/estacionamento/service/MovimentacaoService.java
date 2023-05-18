@@ -52,7 +52,7 @@ public class MovimentacaoService {
 
         final Movimentacao movBanco = this.movimentacaoRepository.findById(id).orElse(null);
 
-        Assert.isTrue((movBanco != null), "Não foi possivel identificar o registro informado");
+        Assert.isTrue(movBanco != null, "Não foi possivel identificar o registro informado");
         Assert.isTrue(movBanco.getId().equals(id), "Não foi possivel identificar o registro informado");
 
         Assert.isTrue(mov.getVeiculo() != null, "Veiculo não informado");

@@ -47,7 +47,7 @@ public class CondutorService {
 
         final Condutor condutorBanco = this.condutorRepository.findById(id).orElse(null);
 
-        Assert.isTrue((condutorBanco != null), "Não foi possivel identificar o registro informado");
+        Assert.isTrue(condutorBanco != null, "Não foi possivel identificar o registro informado");
         Assert.isTrue(condutor.getId().equals(id), "Não foi possivel identificar o registro informado");
 
         Assert.isTrue(condutor.getCpf() != null, "CPF não informado");
