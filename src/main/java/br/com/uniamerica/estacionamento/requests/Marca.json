@@ -1,0 +1,111 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Marca",
+    "dateExported": "2023-05-18T17:49:06.255Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "b71b8137-b21f-4d74-945d-2d74a4c3e8bb",
+            "colId": "17a7f233-fbe6-45ab-895e-6f4480ccc1ef",
+            "containerId": "",
+            "name": "Marca Cadastro",
+            "url": "http://localhost:8080/api/marca",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-05-17T12:04:31.639Z",
+            "modified": "2023-05-17T12:04:31.639Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"FIAT\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "53877ea4-4931-41c3-b143-f5cdaa028255",
+            "colId": "17a7f233-fbe6-45ab-895e-6f4480ccc1ef",
+            "containerId": "",
+            "name": "Marca Editar",
+            "url": "http://localhost:8080/api/marca?id=1",
+            "method": "PUT",
+            "sortNum": 12500,
+            "created": "2023-05-18T11:35:13.097Z",
+            "modified": "2023-05-18T11:49:18.729Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\" : 1,\n  \"cadastro\" : \"2023-05-18T08:31:43.039019\",\n  \"ativo\" : true,\n  \"nome\": \"1324\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "077df5c2-5bc2-4ccf-bf65-52c85a46e284",
+            "colId": "17a7f233-fbe6-45ab-895e-6f4480ccc1ef",
+            "containerId": "",
+            "name": "Marca Delete",
+            "url": "http://localhost:8080/api/marca?id=1",
+            "method": "DELETE",
+            "sortNum": 15000,
+            "created": "2023-05-18T11:33:43.056Z",
+            "modified": "2023-05-18T11:34:08.106Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"FIAT\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bb920839-6f6d-44cb-bacd-679176ed9dc1",
+            "colId": "17a7f233-fbe6-45ab-895e-6f4480ccc1ef",
+            "containerId": "",
+            "name": "Marca Lista",
+            "url": "http://localhost:8080/api/marca/lista",
+            "method": "GET",
+            "sortNum": 25000,
+            "created": "2023-05-17T12:05:01.730Z",
+            "modified": "2023-05-18T11:49:22.433Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "44bc01b0-f187-4f7b-a460-8c2542e751b1",
+            "colId": "17a7f233-fbe6-45ab-895e-6f4480ccc1ef",
+            "containerId": "",
+            "name": "Marca GetByID",
+            "url": "http://localhost:8080/api/marca/3",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-05-18T11:34:16.361Z",
+            "modified": "2023-05-18T11:42:39.866Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"FIAT\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

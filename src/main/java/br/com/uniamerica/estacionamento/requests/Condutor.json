@@ -1,0 +1,101 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Condutor",
+    "dateExported": "2023-05-18T17:48:38.537Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "46633028-2d19-4176-8a3a-5b87ca65fe86",
+            "colId": "aa9c6437-e846-4117-aaf4-c49666d79421",
+            "containerId": "",
+            "name": "Cond Cadastro",
+            "url": "http://localhost:8080/api/condutor",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-05-17T12:02:05.286Z",
+            "modified": "2023-05-18T11:32:06.396Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"Erick\",\n  \"cpf\" : \"123.125.753-03\", \n  \"telefone\" : \"+55 045 12914-6461\",\n  \"tempoPago\" : 10\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6a16f08d-a13f-4bf5-92eb-657e25f9f933",
+            "colId": "aa9c6437-e846-4117-aaf4-c49666d79421",
+            "containerId": "",
+            "name": "Cond Delete ",
+            "url": "http://localhost:8080/api/condutor?id=1",
+            "method": "DELETE",
+            "sortNum": 12500,
+            "created": "2023-05-18T11:21:11.288Z",
+            "modified": "2023-05-18T11:25:25.250Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "d3736976-7946-478e-927d-6dd11d9a1b33",
+            "colId": "aa9c6437-e846-4117-aaf4-c49666d79421",
+            "containerId": "",
+            "name": "Cond Editar",
+            "url": "http://localhost:8080/api/condutor?id=1",
+            "method": "PUT",
+            "sortNum": 15000,
+            "created": "2023-05-17T17:46:11.382Z",
+            "modified": "2023-05-18T11:23:59.872Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\" : 1,\n  \"cadastro\" : \"2023-05-17T14:45:03.166173\",\n  \"nome\": \"Condutor\",\n  \"cpf\" : \"123.015.753-03\", \n  \"telefone\" : \"+55 045 99914-6461\",\n  \"tempoDesconto\" : 5\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f5a84586-1a16-46fe-939f-9fe14840c4d4",
+            "colId": "aa9c6437-e846-4117-aaf4-c49666d79421",
+            "containerId": "",
+            "name": "Cond Lista",
+            "url": "http://localhost:8080/api/condutor/lista",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-05-17T12:02:38.775Z",
+            "modified": "2023-05-18T11:25:28.943Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d2577f12-19ed-4004-9f94-df38cde8cd26",
+            "colId": "aa9c6437-e846-4117-aaf4-c49666d79421",
+            "containerId": "",
+            "name": "Cond GetByID",
+            "url": "http://localhost:8080/api/condutor/2",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-05-18T11:29:45.076Z",
+            "modified": "2023-05-18T11:30:13.310Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

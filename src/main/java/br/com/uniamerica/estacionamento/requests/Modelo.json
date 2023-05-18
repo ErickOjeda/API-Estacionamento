@@ -1,0 +1,116 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Modelo",
+    "dateExported": "2023-05-18T17:49:15.129Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "fbd32cfb-2488-4276-a63d-684ca01a99b4",
+            "colId": "17916f8d-d506-4ffc-a4c4-ed1718144692",
+            "containerId": "",
+            "name": "Mod Cadastro",
+            "url": "http://localhost:8080/api/modelo",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-05-17T12:06:12.173Z",
+            "modified": "2023-05-17T12:06:12.173Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"AAA\",\n  \"marca\": {\n    \"id\" : 1\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d952931e-3b29-4ba7-a46b-6e8742c1c8e9",
+            "colId": "17916f8d-d506-4ffc-a4c4-ed1718144692",
+            "containerId": "",
+            "name": "Mod Editar",
+            "url": "http://localhost:8080/api/modelo?id=1",
+            "method": "PUT",
+            "sortNum": 15000,
+            "created": "2023-05-18T11:53:27.194Z",
+            "modified": "2023-05-18T13:05:04.121Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\" : 1,\n  \"cadastro\" : \"2023-05-18T10:01:03.391303\",\n  \"ativo\" : true,\n  \"nome\": \"BBB\",\n  \"marca\": {\n    \"id\" : 1\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6ed2ec8d-7b1d-4c8c-b45a-d11c6f674ed9",
+            "colId": "17916f8d-d506-4ffc-a4c4-ed1718144692",
+            "containerId": "",
+            "name": "Mod Delete ",
+            "url": "http://localhost:8080/api/modelo?id=1",
+            "method": "DELETE",
+            "sortNum": 17500,
+            "created": "2023-05-18T11:53:59.227Z",
+            "modified": "2023-05-18T11:54:49.414Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\" : 1,\n  \"nome\": \"AAA\",\n  \"marca\": {\n    \"id\" : 1\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "093020fd-88be-45a8-86d6-1802a400c22a",
+            "colId": "17916f8d-d506-4ffc-a4c4-ed1718144692",
+            "containerId": "",
+            "name": "Mod Lista",
+            "url": "http://localhost:8080/api/modelo/lista",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-05-17T12:06:57.595Z",
+            "modified": "2023-05-17T12:06:57.595Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"AAA\",\n  \"marca\": {\n    \"id\" : 1\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1ae012e5-6add-49c6-9b29-aa974eeeb9fa",
+            "colId": "17916f8d-d506-4ffc-a4c4-ed1718144692",
+            "containerId": "",
+            "name": "Mod GetByID",
+            "url": "http://localhost:8080/api/modelo/lista",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-05-18T13:12:14.427Z",
+            "modified": "2023-05-18T13:12:14.427Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"AAA\",\n  \"marca\": {\n    \"id\" : 1\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

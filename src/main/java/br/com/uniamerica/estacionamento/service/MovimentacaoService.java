@@ -52,8 +52,8 @@ public class MovimentacaoService {
 
         final Movimentacao movBanco = this.movimentacaoRepository.findById(id).orElse(null);
 
-        Assert.isTrue(movBanco != null, "Não foi possivel identificar o registro informado");
-        Assert.isTrue(movBanco.getId().equals(id), "Não foi possivel identificar o registro informado");
+        Assert.isTrue(this.movimentacaoRepository.existsById(id), "Não foi possivel identificar o registro informado");
+        Assert.isTrue(mov.getId().equals(id), "Id enviado nao coincide com id no corpo da requisicao");
 
         Assert.isTrue(mov.getVeiculo() != null, "Veiculo não informado");
         Assert.isTrue(mov.getCondutor() != null, "Condutor não informada");
@@ -99,29 +99,36 @@ public class MovimentacaoService {
         final BigDecimal minutos = BigDecimal.valueOf(duracao.toMinutesPart()).divide(BigDecimal.valueOf(60), 2, RoundingMode.HALF_EVEN);
         BigDecimal preco = config.getValorHora().multiply(horas).add(config.getValorHora().multiply(minutos));
 
-        final BigDecimal tempoDesconto = condutor.getTempoDesconto() != null ? condutor.getTempoDesconto() : new BigDecimal(0);
+        final BigDecimal tempoPago = condutor.getTempoPago() != null ? condutor.getTempoPago() : new BigDecimal(0);
 
-        BigDecimal valor_desc = BigDecimal.ZERO;
+        BigDecimal valor_desc;
 
-        if(tempoDesconto.compareTo( new BigDecimal(config.getTempoParaDesconto())) >= 0) {
+        if (tempoPago.compareTo(new BigDecimal(config.getTempoParaDesconto())) >= 0) {
             valor_desc = config.getTempoDesconto();
 
             movBanco.setValorDesconto(valor_desc);
-            condutor.setTempoDesconto(new BigDecimal(0));
+            condutor.setTempoPago(BigDecimal.ZERO);
+        }else {
+            valor_desc = BigDecimal.ZERO;
         }
 
-        movBanco.setValorTotal(preco.subtract(valor_desc));
+        BigDecimal valorTotal = preco.subtract(valor_desc);
+        movBanco.setValorTotal(valorTotal);
+
         movBanco.setValorHora(config.getValorHora());
         movBanco.setValorMinutoMulta(config.getValorMinutoMulta());
 
         if (config.getGerarDesconto()) {
-            condutor.setTempoDesconto(tempoDesconto.add(horas.add(minutos)));
+            condutor.setTempoPago(tempoPago.add(horas.add(minutos)));
         }
 
         this.condutorRepository.save(condutor);
         this.movimentacaoRepository.save(movBanco);
 
-        return new Relatorio(movBanco.getEntrada(), movBanco.getSaida(), movBanco.getCondutor(), movBanco.getVeiculo(), horas.intValue(), tempoDesconto.setScale(0, RoundingMode.HALF_EVEN), preco.subtract(valor_desc).setScale(2, RoundingMode.HALF_EVEN), valor_desc.setScale(2, RoundingMode.HALF_EVEN));
+        return new Relatorio(movBanco.getEntrada(), movBanco.getSaida(), movBanco.getCondutor(), movBanco.getVeiculo(), horas.intValue(),
+                            tempoPago.setScale(0, RoundingMode.HALF_EVEN),
+                            preco.subtract(valor_desc).setScale(2, RoundingMode.HALF_EVEN),
+                            valor_desc.setScale(2, RoundingMode.HALF_EVEN));
     }
 
     @Transactional(rollbackFor = Exception.class)

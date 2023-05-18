@@ -74,7 +74,7 @@ public class CondutorController {
     public ResponseEntity <?> deletar (@RequestParam ("id") final Long id) {
         try {
             this.condutorService.deletar(id);
-            return ResponseEntity.ok("Deletado com sucesso");
+            return ResponseEntity.ok("Deletado com sucesso   ");
         } catch (DataIntegrityViolationException e){
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
         } catch (RuntimeException e){

@@ -1,0 +1,105 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Veiculo",
+    "dateExported": "2023-05-18T17:49:23.788Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "509ed711-b366-455a-a9db-309048cf622c",
+            "colId": "5e426fbf-e466-48a4-a245-b1604bda22f8",
+            "containerId": "",
+            "name": "Veiculo Cadastro",
+            "url": "http://localhost:8080/api/veiculo",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-05-17T12:12:06.106Z",
+            "modified": "2023-05-18T11:32:25.536Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"placa\": \"ABC1A23\",\n  \"modelo\": {\n    \"id\" : 1\n  },\n  \"cor\" : \"PRETO\",\n  \"tipo\" : \"CARRO\",\n  \"ano\" : 2010\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7a4813d7-a461-45cc-b785-4eb9429f6b02",
+            "colId": "5e426fbf-e466-48a4-a245-b1604bda22f8",
+            "containerId": "",
+            "name": "Veiculo Editar",
+            "url": "http://localhost:8080/api/veiculo",
+            "method": "POST",
+            "sortNum": 12500,
+            "created": "2023-05-18T13:11:37.650Z",
+            "modified": "2023-05-18T13:11:37.650Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"placa\": \"ABC1A23\",\n  \"modelo\": {\n    \"id\" : 1\n  },\n  \"cor\" : \"PRETO\",\n  \"tipo\" : \"CARRO\",\n  \"ano\" : 2010\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6d9b7de1-7e10-4383-b76d-6c135e4ccbc0",
+            "colId": "5e426fbf-e466-48a4-a245-b1604bda22f8",
+            "containerId": "",
+            "name": "Veiculo Delete",
+            "url": "http://localhost:8080/api/veiculo?id=1",
+            "method": "DELETE",
+            "sortNum": 15000,
+            "created": "2023-05-18T13:05:19.934Z",
+            "modified": "2023-05-18T13:06:09.572Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "1d49f816-1f15-4e93-93a5-439c69ce64d3",
+            "colId": "5e426fbf-e466-48a4-a245-b1604bda22f8",
+            "containerId": "",
+            "name": "Veiculo Lista",
+            "url": "http://localhost:8080/api/veiculo/lista",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-05-17T12:12:44.924Z",
+            "modified": "2023-05-17T12:12:44.924Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"placa\": \"ABC1A34\",\n  \"modelo\": {\n    \"id\" : 1\n  },\n  \"cor\" : \"PRETO\",\n  \"tipo\" : \"CARRO\",\n  \"ano\" : 2010\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "93949fea-ef95-49cc-b486-003409ebda4d",
+            "colId": "5e426fbf-e466-48a4-a245-b1604bda22f8",
+            "containerId": "",
+            "name": "Veiculo GetByID",
+            "url": "http://localhost:8080/api/veiculo/1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-05-18T13:11:53.421Z",
+            "modified": "2023-05-18T13:12:08.653Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"placa\": \"ABC1A34\",\n  \"modelo\": {\n    \"id\" : 1\n  },\n  \"cor\" : \"PRETO\",\n  \"tipo\" : \"CARRO\",\n  \"ano\" : 2010\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

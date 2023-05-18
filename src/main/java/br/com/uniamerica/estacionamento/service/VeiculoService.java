@@ -52,9 +52,7 @@ public class VeiculoService {
     @Transactional(rollbackFor = Exception.class)
     public void editar(final Long id,final Veiculo veiculo){
 
-        final Veiculo veiculoBanco = this.veiculoRepository.findById(id).orElse(null);
-
-        Assert.isTrue(veiculoBanco != null, "Não foi possivel identificar o registro informado");
+        Assert.isTrue(this.veiculoRepository.existsById(id), "Não foi possivel identificar o registro informado");
         Assert.isTrue(veiculo.getId().equals(id), "Não foi possivel identificar o registro informado");
 
         Assert.isTrue(veiculo.getPlaca() != null, "Placa não informada");
@@ -79,7 +77,7 @@ public class VeiculoService {
     public void deletar(final Long id){
 
         final Veiculo veiculoBanco = this.veiculoRepository.findById(id).orElse(null);
-        Assert.isTrue(veiculoBanco != null, "Registro não encontrado");
+        Assert.isTrue (veiculoBanco != null, "Registro não encontrado");
 
         List<Movimentacao> movs = this.movimentacaoRepository.findMovimentacoesByVeiculo(veiculoBanco);
 

@@ -32,7 +32,7 @@ public class Condutor extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "tempo_pago")
-    private Integer tempoPago;
+    private BigDecimal tempoPago;
 
     @Getter @Setter
     @Column(name = "tempo_desconto")

@@ -42,10 +42,8 @@ public class ModeloService {
     @Transactional(rollbackFor = Exception.class)
     public void editar(final Long id,final Modelo modelo){
 
-        final Modelo modeloBanco = this.modeloRepository.findById(id).orElse(null);
-
-        Assert.isTrue(modeloBanco != null, "Não foi possivel identificar o registro informado");
-        Assert.isTrue(modelo.getId().equals(id), "Não foi possivel identificar o registro informado");
+        Assert.isTrue(this.modeloRepository.existsById(id), "Não foi possivel identificar o registro informado");
+        Assert.isTrue(modelo.getId().equals(id), "Id enviado nao coincide com id no corpo da requisicao");
 
         Assert.isTrue(modelo.getNome() != null, "Nome não informado");
         Assert.isTrue(modelo.getMarca() != null, "Marca não informada");

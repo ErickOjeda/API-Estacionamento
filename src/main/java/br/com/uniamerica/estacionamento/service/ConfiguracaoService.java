@@ -36,10 +36,9 @@ public class ConfiguracaoService {
     @Transactional(rollbackFor = Exception.class)
     public void editar(final Long id, final Configuracao config){
 
-        final Configuracao configBanco = this.configuracaoRepository.findById(id).orElse(null);
 
-        Assert.isTrue(configBanco != null, "Não foi possivel identificar o registro informado 1");
-        Assert.isTrue(config.getId().equals(id), "Não foi possivel identificar o registro informado 2");
+        Assert.isTrue(this.configuracaoRepository.existsById(id), "Não foi possivel identificar o registro informado");
+        Assert.isTrue(config.getId().equals(id), "Id enviado nao coincide com id no corpo da requisicao");
 
         Assert.isTrue(config.getValorHora() != null, "Valor hora não informado");
         Assert.isTrue(config.getValorMinutoMulta() != null, "Valor minuto multa não informado");

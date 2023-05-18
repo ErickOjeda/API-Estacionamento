@@ -45,10 +45,8 @@ public class CondutorService {
     @Transactional(rollbackFor = Exception.class)
     public void editar(final Long id,final Condutor condutor){
 
-        final Condutor condutorBanco = this.condutorRepository.findById(id).orElse(null);
-
-        Assert.isTrue(condutorBanco != null, "Não foi possivel identificar o registro informado");
-        Assert.isTrue(condutor.getId().equals(id), "Não foi possivel identificar o registro informado");
+        Assert.isTrue(this.condutorRepository.existsById(id), "Não foi possivel identificar o registro informado");
+        Assert.isTrue(condutor.getId().equals(id), "Id enviado nao coincide com id no corpo da requisicao");
 
         Assert.isTrue(condutor.getCpf() != null, "CPF não informado");
         Assert.isTrue(condutor.getNome() != null, "Nome não informado");

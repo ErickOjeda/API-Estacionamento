@@ -1,0 +1,67 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Config",
+    "dateExported": "2023-05-18T17:49:53.963Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "8b7bd3c1-e54a-420d-8f04-3a98c6730ed1",
+            "colId": "790b8e2e-5290-4161-9ec9-1e9f69fbe612",
+            "containerId": "",
+            "name": "Config Cadastro",
+            "url": "http://localhost:8080/api/config",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-05-17T12:43:05.954Z",
+            "modified": "2023-05-18T13:42:38.359Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"valorHora\" : 2,\n  \"valorMinutoMulta\" : 1,\n  \"inicioExpediente\" : \"06:00:00\",\n  \"fimExpediente\" : \"22:00:00\",\n  \"tempoParaDesconto\" : 10,\n  \"gerarDesconto\" : true\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "48db8bfb-d747-439b-bace-07a7ce8e2609",
+            "colId": "790b8e2e-5290-4161-9ec9-1e9f69fbe612",
+            "containerId": "",
+            "name": "Config Editar",
+            "url": "http://localhost:8080/api/config?id=1",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2023-05-18T13:15:34.295Z",
+            "modified": "2023-05-18T13:23:37.727Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\" : 1,\n  \"cadastro\" : \"2023-05-18T10:22:50.698335\",\n  \"ativo\" : true,\n  \"valorHora\" : 2,\n  \"valorMinutoMulta\" : 1,\n  \"inicioExpediente\" : \"06:00:00\",\n  \"fimExpediente\" : \"22:00:00\",\n  \"tempoParaDesconto\" : 10,\n  \"gerarDesconto\" : true,\n  \"vagasMoto\" : 10,\n  \"vagasVan\" : 10,\n  \"vagasCarro\" : 10\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "4f9da5dd-2ef2-491d-8bf7-acd669fd538b",
+            "colId": "790b8e2e-5290-4161-9ec9-1e9f69fbe612",
+            "containerId": "",
+            "name": "Config Lista",
+            "url": "http://localhost:8080/api/config/lista",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-05-18T13:36:06.927Z",
+            "modified": "2023-05-18T13:40:38.169Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
