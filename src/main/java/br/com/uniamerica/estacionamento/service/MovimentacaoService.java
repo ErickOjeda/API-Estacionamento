@@ -101,19 +101,10 @@ public class MovimentacaoService {
 
         final BigDecimal tempoDesconto = condutor.getTempoDesconto() != null ? condutor.getTempoDesconto() : new BigDecimal(0);
 
-        if (config.getGerarDesconto()) {
-            condutor.setTempoDesconto(tempoDesconto.add(horas.add(minutos)));
-        }
-
         BigDecimal valor_desc = BigDecimal.ZERO;
 
         if(tempoDesconto.compareTo( new BigDecimal(config.getTempoParaDesconto())) >= 0) {
-            valor_desc = config.getValorHora().multiply(tempoDesconto);
-
-            // Caso o valor do desconto seja maior que o preco a pagar
-            if (valor_desc.compareTo(preco) >= 0){
-                valor_desc = preco;
-            }
+            valor_desc = config.getTempoDesconto();
 
             movBanco.setValorDesconto(valor_desc);
             condutor.setTempoDesconto(new BigDecimal(0));
@@ -122,6 +113,10 @@ public class MovimentacaoService {
         movBanco.setValorTotal(preco.subtract(valor_desc));
         movBanco.setValorHora(config.getValorHora());
         movBanco.setValorMinutoMulta(config.getValorMinutoMulta());
+
+        if (config.getGerarDesconto()) {
+            condutor.setTempoDesconto(tempoDesconto.add(horas.add(minutos)));
+        }
 
         this.condutorRepository.save(condutor);
         this.movimentacaoRepository.save(movBanco);

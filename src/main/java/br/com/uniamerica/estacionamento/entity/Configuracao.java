@@ -32,9 +32,9 @@ public class Configuracao extends AbstractEntity{
     @Getter @Setter
     @Column(name = "tempo_para_desconto", nullable = false)
     private Integer tempoParaDesconto;
-//    @Getter @Setter
-//    @Column(name = "tempo_desconto", nullable = false)
-//    private LocalTime tempoDesconto;
+    @Getter @Setter
+    @Column(name = "tempo_desconto", nullable = false)
+    private BigDecimal tempoDesconto;
     @Getter @Setter
     @Column(name = "gerar_desconto", nullable = false)
     private Boolean gerarDesconto;
