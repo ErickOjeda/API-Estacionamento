@@ -23,29 +23,15 @@ public class ConfiguracaoService {
     @Transactional(rollbackFor = Exception.class)
     public void cadastrar(final Configuracao config){
 
-        Assert.isTrue(config.getValorHora() != null, "Valor hora não informado");
-        Assert.isTrue(config.getValorMinutoMulta() != null, "Valor minuto multa não informado");
-        Assert.isTrue(config.getInicioExpediente() != null, "Inicio expediente não informado");
-        Assert.isTrue(config.getFimExpediente() != null, "Fim expediente não informado");
-        Assert.isTrue(config.getTempoParaDesconto() != null, "Tempo desconto não informado");
-        Assert.isTrue(config.getGerarDesconto() != null, "Gerar desconto não informado");
-
         this.configuracaoRepository.save(config);
     }
 
     @Transactional(rollbackFor = Exception.class)
     public void editar(final Long id, final Configuracao config){
 
-
         Assert.isTrue(this.configuracaoRepository.existsById(id), "Não foi possivel identificar o registro informado");
         Assert.isTrue(config.getId().equals(id), "Id enviado nao coincide com id no corpo da requisicao");
 
-        Assert.isTrue(config.getValorHora() != null, "Valor hora não informado");
-        Assert.isTrue(config.getValorMinutoMulta() != null, "Valor minuto multa não informado");
-        Assert.isTrue(config.getInicioExpediente() != null, "Inicio expediente não informado");
-        Assert.isTrue(config.getFimExpediente() != null, "Fim expediente não informado");
-        Assert.isTrue(config.getTempoParaDesconto() != null, "Tempo desconto não informado");
-        Assert.isTrue(config.getGerarDesconto() != null, "Gerar desconto não informado");
         Assert.isTrue(config.getVagasCarro()  != null, "Vagas de carro não informado");
         Assert.isTrue(config.getVagasVan() != null, "Vagas de van não informado");
         Assert.isTrue(config.getVagasMoto() != null, "Vagas de moto não informado");
